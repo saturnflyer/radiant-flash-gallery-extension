@@ -8,7 +8,7 @@ describe Gallery do
     @uploaded_file = ActionController::TestUploadedFile.new(SWF_TEST_FILE,'application/x-shockwave-flash')
     @gallery.swf = @uploaded_file
 
-    @xml_location = "#{FlashGalleryExtension::GALLERY_PATH}/happy_fun_gallery.xml"
+    @xml_location = "#{FlashGalleryExtension.gallery_path}/happy_fun_gallery.xml"
   end
 
   it "should be valid" do

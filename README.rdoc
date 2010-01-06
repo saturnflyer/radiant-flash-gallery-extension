@@ -28,3 +28,7 @@ It also includes assets from the Radiant Reorder extension (c) 2009 Sean Cribbs.
 All other code (c) 2009 Nick Plante.
 
 http://github.com/zapnap/radiant-flash-gallery-extension
+
+== Additional updates
+
+* Jim Gay of Saturn Flyer http://www.saturnflyer.com

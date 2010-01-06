@@ -31,8 +31,14 @@
       %label Caption
       = f.text_field :caption, :class => 'textbox'
     %p.title
-      %label Link
+      %label Pause (optional number of seconds to display the image)
+      = f.text_field :pause, :class => 'textbox'
+    %p.title
+      %label Link (optional)
       = f.text_field :link, :class => 'textbox'
+    %p.title
+      %label Target (only used with links)
+      = f.select :target, [['Current window','_self'],['New window','_blank']]
     %p.title
       %label Asset
       = gallery_item_asset_tag(@gallery_item.asset, :class => 'asset') if @gallery_item.asset.exists?

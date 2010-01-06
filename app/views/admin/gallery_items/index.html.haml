@@ -35,6 +35,7 @@
     %tr
       %th.title Title
       %th.link Link
+      %th Pause
       %th.modify Modify
       %th.order Order
   %tbody
@@ -48,7 +49,8 @@
             %span.w1
               = link_to item.title, edit_admin_gallery_item_url(@gallery, item)
 
-          %td.link= "#{item.link}"
+          %td.link= item.link
+          %td= item.pause
           %td.remove
             = link_to("#{image('minus.png')} Remove", admin_gallery_item_url(@gallery, item), :method => :delete, :alt => 'remove gallery item', :confirm => 'Are you sure? This will delete the gallery item!')
           %td.order

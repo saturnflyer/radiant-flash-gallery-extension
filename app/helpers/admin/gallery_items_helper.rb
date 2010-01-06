@@ -10,9 +10,11 @@ module Admin::GalleryItemsHelper
   def order_links(gallery_item)
     returning String.new do |output|
       %w{move_to_top move_higher move_lower move_to_bottom}.each do |action|
-        output << link_to(image("#{action}.png", :alt => action.humanize), 
-                          self.send("#{action}_admin_gallery_item_url", gallery_item.gallery, gallery_item),
-                          :method => :post)
+        if (!gallery_item.first? && action.match(/top|higher/)) || (!gallery_item.last? && action.match(/bottom|lower/))
+          output << link_to(image("#{action}.png", :alt => action.humanize), 
+                            self.send("#{action}_admin_gallery_item_url", gallery_item.gallery, gallery_item),
+                            :method => :post)
+        end
       end
     end
   end
