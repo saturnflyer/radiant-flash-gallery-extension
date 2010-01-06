@@ -2,7 +2,9 @@ class GalleryItem < ActiveRecord::Base
   belongs_to :gallery
 
   acts_as_list :scope => :gallery_id
-  has_attached_file :asset
+  has_attached_file :asset,
+    :path => ":rails_root/public#{Radiant::Config['flash_gallery.path']}/containers/gallery_items/:id/:style/:basename.:extension",
+    :url  => "#{Radiant::Config['flash_gallery.path']}/containers/gallery_items/:id/:style/:basename.:extension"
 
   validates_presence_of :gallery
   validates_attachment_presence :asset

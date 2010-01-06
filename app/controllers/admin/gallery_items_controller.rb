@@ -14,7 +14,6 @@ class Admin::GalleryItemsController < ApplicationController
   def create
     @gallery_item = @gallery.gallery_items.build(params[:gallery_item])
     if @gallery_item.save
-      flash[:notice] = "Successfully added a new gallery item."
       redirect_to(admin_gallery_items_path(@gallery))
     else
       flash[:error] = "Validation errors occurred while processing this form. Please take a moment to review the form and correct any input errors before continuing."
@@ -30,7 +29,6 @@ class Admin::GalleryItemsController < ApplicationController
   def update
     @gallery_item = @gallery.gallery_items.find(params[:id])
     if @gallery_item.update_attributes(params[:gallery_item])
-      flash[:notice] = "Successfully updated the gallery item details."
       redirect_to(admin_gallery_items_path(@gallery))
     else
       flash[:error] = "Validation errors occurred while processing this form. Please take a moment to review the form and correct any input errors before continuing."
@@ -41,7 +39,6 @@ class Admin::GalleryItemsController < ApplicationController
   def destroy
     @gallery_item = @gallery.gallery_items.find(params[:id])
     @gallery_item.destroy
-    flash[:error] = "The gallery item was deleted."
     redirect_to(admin_gallery_items_path)
   end
 
