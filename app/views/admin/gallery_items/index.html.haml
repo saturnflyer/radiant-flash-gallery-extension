@@ -41,7 +41,7 @@
   %tbody
     - if @gallery_items.empty?
       %tr
-        %td.note{:colspan => 4} No Gallery Items
+        %td.note{:colspan => 5} No Gallery Items
     - else 
       - @gallery_items.each do |item|
         %tr.node.level-1{:id => "gallery-item-#{item.id}"}
