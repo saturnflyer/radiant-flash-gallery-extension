@@ -5,6 +5,8 @@ class GalleryItem < ActiveRecord::Base
   has_attached_file :asset,
     :path => ":rails_root/public#{Radiant::Config['flash_gallery.path']}/containers/gallery_items/:id/:style/:basename.:extension",
     :url  => "#{Radiant::Config['flash_gallery.path']}/containers/gallery_items/:id/:style/:basename.:extension"
+    
+  attr_protected :asset_file_name, :asset_content_type, :asset_size
 
   validates_presence_of :gallery
   validates_attachment_presence :asset

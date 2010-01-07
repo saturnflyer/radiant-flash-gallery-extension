@@ -6,6 +6,11 @@ class Gallery < ActiveRecord::Base
   has_attached_file :audio, 
     :path => ":rails_root/public#{Radiant::Config['flash_gallery.path']}/containers/:id/:style/:basename.:extension",
     :url  => "#{Radiant::Config['flash_gallery.path']}/containers/:id/:style/:basename.:extension"
+    
+  attr_protected :swf_file_name, :swf_content_type, :swf_size
+  attr_protected :audio_file_name, :audio_content_type, :audio_size
+  
+  attr_accessor :remove_audio
 
   validates_presence_of :title
   validates_uniqueness_of :title

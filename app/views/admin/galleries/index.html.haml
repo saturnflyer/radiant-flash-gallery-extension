@@ -48,7 +48,7 @@
           %td.page
             %span.w1
               = link_to gallery.title, edit_admin_gallery_url(gallery)
-          %td= gallery.audio_caption ? link_to(gallery.audio_caption, gallery.audio.url) : gallery.audio_file_name
+          %td= gallery.audio ? gallery.audio_file_name : ''
           %td.gallery= link_to("#{gallery.gallery_items.length} items", admin_gallery_items_url(gallery), :alt => 'view media items in this gallery')
           %td.add-item
             = link_to("#{image('plus.png')} Add Item", new_admin_gallery_item_url(gallery), :alt => 'add media item to gallery')

@@ -34,6 +34,9 @@ class Admin::GalleriesController < ApplicationController
 
   def update
     @gallery = Gallery.find(params[:id])
+    if remove_audio = params[:gallery].delete('remove_audio')
+      @gallery.audio.clear
+    end
     if @gallery.update_attributes(params[:gallery])
       redirect_to(admin_galleries_path)
     else

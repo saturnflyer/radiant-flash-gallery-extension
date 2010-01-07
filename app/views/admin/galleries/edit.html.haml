@@ -1,8 +1,5 @@
 - content_for 'page_css' do
   :sass
-    p.title
-      margin: 10px 0 !important
-
     #content .form-area div.error-with-field
       input.textbox
         font-family: Georgia,Palatino,"Times New Roman",Times,serif
@@ -35,17 +32,21 @@
     %p.title
       %label Description
       = f.text_area :description, :class => 'textarea'
-    %p.title
-      %label SlideShowPro SWF File
-      = link_to('Flash Gallery [preview]', admin_gallery_url(@gallery), :target => '_blank', :class => 'asset') if @gallery.swf.exists?
-      %br
-      = f.file_field :swf, :class => 'button'
-    %p.title
-      %label Audio File (optional)
-      %br
-      = f.file_field :audio, :class => 'button'
-    %p.title
-      %label Audio caption (only used with audio)
+    %p
+      = f.label :swf, 'SlideShowPro SWF File'
+      = link_to('preview', admin_gallery_url(@gallery), :target => '_blank') if @gallery.swf.exists?
+      = f.file_field :swf, :label => 'hello'
+    %h2 Optional Audio
+    %p
+      = f.label :audio, 'MP3 File'
+      - if @gallery.audio.exists?
+        = link_to("#{@gallery.audio_file_name} (listen)", @gallery.audio.url, :target => '_blank')
+        = f.check_box :remove_audio
+        = f.label :remove_audio
+      - else
+        = f.file_field :audio
+    %p
+      = f.label :audio_caption
       = f.text_field :audio_caption, :class => 'textbox'
     
   %p.buttons
