@@ -7,8 +7,8 @@ class Gallery < ActiveRecord::Base
     :path => ":rails_root/public#{Radiant::Config['flash_gallery.path']}/containers/:id/:style/:basename.:extension",
     :url  => "#{Radiant::Config['flash_gallery.path']}/containers/:id/:style/:basename.:extension"
     
-  attr_protected :swf_file_name, :swf_content_type, :swf_size
-  attr_protected :audio_file_name, :audio_content_type, :audio_size
+  attr_protected :swf_file_name, :swf_content_type, :swf_file_size
+  attr_protected :audio_file_name, :audio_content_type, :audio_file_size
   
   attr_accessor :remove_audio
 
@@ -40,6 +40,7 @@ class Gallery < ActiveRecord::Base
 
   # write the file to the specified disk location
   def publish
+    unpublish
     File.open(full_xml_file_path, 'w') do |f|
       f.write self.to_xml
     end

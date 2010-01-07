@@ -6,7 +6,7 @@ class GalleryItem < ActiveRecord::Base
     :path => ":rails_root/public#{Radiant::Config['flash_gallery.path']}/containers/gallery_items/:id/:style/:basename.:extension",
     :url  => "#{Radiant::Config['flash_gallery.path']}/containers/gallery_items/:id/:style/:basename.:extension"
     
-  attr_protected :asset_file_name, :asset_content_type, :asset_size
+  attr_protected :asset_file_name, :asset_content_type, :asset_file_size
 
   validates_presence_of :gallery
   validates_attachment_presence :asset
